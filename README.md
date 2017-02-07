@@ -39,7 +39,7 @@
     </a>
 </p>
 
-This project provides an general server library which provides SPNEGO mechanism.
+This project provides a general server library which provides SPNEGO mechanism.
 
 This package builds with Swift Package Manager and is part of the [Perfect](https://github.com/PerfectlySoft/Perfect) project.
 
@@ -155,5 +155,5 @@ For more information on the Perfect project, please visit [perfect.org](http://p
 
 ## Acknowledgement
 
-For rapid development purposes, this repo includes an base64 implementation developed by Sean Starkey <sean@seanstarkey.com> but it is subject to Perfect's future development. 
+For rapid development purposes, this repo includes an base64 implementation developed by Sean Starkey <sean@seanstarkey.com> but it is subject to Perfect's future development.
 [https://github.com/SeanStarkey/base64](https://github.com/SeanStarkey/base64)
