@@ -1,0 +1,6 @@
+module cspnego {
+  header "cspnego.h"
+  link "gssapi_krb5"
+  link "cspnego"
+  export *
+}
