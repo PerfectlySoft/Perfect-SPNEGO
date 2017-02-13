@@ -63,11 +63,18 @@ $ swift package -Xlinker -framework -Xlinker GSS generate-xcodeproj
 
 ### Linux Build Note
 
+A special library called libkrb5-dev is required to build this project:
+
+```
+$ sudo apt-get install libkrb5-dev
+```
+
 If your server is a KDC, then you can skip this step, otherwise please install Kerberos V5 utilities:
 
 ```
-$ sudo apt-get install krb5-user libkrb5-dev
+$ sudo apt-get install krb5-user
 ```
+
 
 ### KDC Configuration
 

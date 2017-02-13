@@ -66,10 +66,16 @@ $ swift package -Xlinker -framework -Xlinker GSS generate-xcodeproj
 
 ### Linux 编译指南
 
+函数库 libkrb5-dev 需要在编译之前安装：
+
+```
+$ sudo apt-get install libkrb5-dev
+```
+
 如果您的服务器是一个KDC（安全控制中心），您可以忽略这一步，否则请安装 Kerberos V5 工具组件，以及开发函数库：
 
 ```
-$ sudo apt-get install krb5-user libkrb5-dev
+$ sudo apt-get install krb5-user
 ```
 
 ### KDC配置
