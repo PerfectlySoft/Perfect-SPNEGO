@@ -266,7 +266,15 @@ int krequest(void * ticket, TOKEN token, TOKEN * usr, TOKEN * reply, int debug) 
 		&flags, NULL, NULL);
 	if (mj != GSS_S_COMPLETE) {
 		if (debug) gss_debug(mj, mi);
-		return -2;
+		if (mj == GSS_S_CONTINUE_NEEDED) {
+			if (output_token.length > 0) {
+				base64_encode(output_token, reply);
+				gss_release_buffer(&mi, &output_token);
+			}//end if
+			return -4;
+		}else {
+			return -2;
+		}
 	}//end if
 
 	// get client name

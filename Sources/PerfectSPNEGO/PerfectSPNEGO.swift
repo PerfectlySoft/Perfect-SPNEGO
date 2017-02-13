@@ -26,6 +26,8 @@ public enum Exception : Error {
   case INVALID_TOKEN
   /// invalid user - unexpected null user
   case INVALID_USER
+  /// call again - GSS required to call it once more
+  case CALL_AGAIN
   /// other reasons.
   case UNKNOWN
 }//end Exception
@@ -87,7 +89,7 @@ public class Spnego {
   ///   - base64Token: challenge string from client
   /// - returns:
   ///   (username, response) - a turple of authentication. username is the client name, response is the token to send back to the client
-  public func accept(base64Token: String) throws -> (String, String?) {
+  public func accept(base64Token: String) throws -> (String?, String?) {
     let input = Base64.decode(string: base64Token)
     var usr = TOKEN()
     var reply = TOKEN()
@@ -97,6 +99,14 @@ public class Spnego {
     case -1: throw Exception.INVALID_TICKET
     case -2: throw Exception.INVALID_TOKEN
     case -3: throw Exception.INVALID_USER
+    case -4:
+      if reply.length > 0 && reply.value != nil {
+        let token = String(validatingUTF8: unsafeBitCast(reply.value, to: UnsafePointer<CChar>.self))
+        kfree(reply)
+        return (nil, token)
+      }else{
+        throw Exception.CALL_AGAIN
+      }//end if
     default:
       guard usr.length > 0 && usr.value != nil else {
         throw Exception.UNKNOWN
