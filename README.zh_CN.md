@@ -56,6 +56,14 @@ Perfect SPNEGO 瞄准的是所有用Swift 编程的通用服务器组件，因�
 
 在安装到目标服务器软件之前，请确认您的服务器已经完成了Kerberos V的配置。
 
+### Xcode 编译指南
+
+如果您希望使用Xcode 编译本项目，请使用将特殊的符号传递给 SPM 软件包管理器：
+
+```
+$ swift package -Xlinker -framework -Xlinker GSS generate-xcodeproj
+```
+
 ### Linux 编译指南
 
 如果您的服务器是一个KDC（安全控制中心），您可以忽略这一步，否则请安装 Kerberos V5 工具组件，以及开发函数库：

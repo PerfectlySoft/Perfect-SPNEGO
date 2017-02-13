@@ -53,6 +53,14 @@ Although it supports Perfect HTTP server natively, it could be applied to any ot
 
 Before attaching to any actual server applications, please make sure your server has been already configured with Kerberos V5.
 
+### Xcode Build Note
+
+If you would like to use Xcode to build this project, please make sure to pass proper linker flags to the Swift Package Manager:
+
+```
+$ swift package -Xlinker -framework -Xlinker GSS generate-xcodeproj
+```
+
 ### Linux Build Note
 
 If your server is a KDC, then you can skip this step, otherwise please install Kerberos V5 utilities:
